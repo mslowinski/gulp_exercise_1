@@ -1,0 +1,21 @@
+{
+  "name": "gulp-concat-wrap",
+  "version": "0.0.1",
+  "description": "gulp exercise 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "MSL",
+  "license": "ISC",
+  "devDependencies": {
+    "add-stream": "^1.0.0",
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "mocha": "^2.3.4",
+    "should": "^7.1.1",
+    "stream-from-array": "^0.1.0"
+  },
+  "dependencies": {}
+}
