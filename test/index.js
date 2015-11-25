@@ -25,8 +25,8 @@ describe('concatWrap', function() {
         } expect(missingArgument).to.throw('Missing output file name!');
     });
 
-    it('should concat files and add prefix and suffix text', function() {
-
+    it('should concat files and add prefix and suffix text', function(done) {
+        var expectedValue = '//prefix\ninput file 1\ninput file 2\n//suffix';
         var testFile_1 = new File({
             base: __dirname,
             cwd: __dirname,
@@ -43,14 +43,8 @@ describe('concatWrap', function() {
          streamFromArray.obj([testFile_1, testFile_2])
          .pipe(gulpConcatWrap({name:'file.js', prefix:'//prefix', suffix: '//suffix'}))
          .on('data', function(file) {
-             var cont = file.contents.toString().split('\n');
-             expect(cont.length).to.be.equql(4);
-             expect(cont[0]).to.be.equql('//prefix');
-             expect(cont[1]).to.be.equql('input file 1');
-             expect(cont[2]).to.be.equql('input file 2');
-             expect(cont[3]).to.be.equql('//suffix');
-
-             done();
+            expect(String(file.contents)).to.eq(expectedValue);
+            done();
 
          });
     });
